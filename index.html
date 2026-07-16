@@ -5,25 +5,26 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <!-- ============ SEO ============ -->
-<title>The Money Belief Test — Find Your Money Archetype in 16 Statements | I am invested</title>
-<meta name="description" content="A free money belief test based on the money scripts framework from financial psychology (Klontz). 16 statements reveal your money archetype — Avoider, Chaser, Show-off or Worrier — the limiting money beliefs behind it, and how to change them.">
-<meta name="keywords" content="money belief test, money beliefs, money archetype quiz, money mindset quiz, money scripts, Klontz money script inventory, limiting money beliefs, how to change money beliefs, money personality test, financial psychology quiz, money blocks, scarcity mindset money">
+<title>The Money Belief Test — Find Your Money Personality in 16 Statements | I am invested</title>
+<meta name="description" content="A free money belief test based on the money scripts framework from financial psychology (Klontz). 16 statements reveal your money personality — Avoider, Chaser, Show-off or Worrier — the money beliefs behind it, and how to change them.">
+<meta name="keywords" content="money belief test, money beliefs, money personality test, money personality quiz, money mindset quiz, money archetype quiz, money scripts, Klontz money script inventory, limiting money beliefs, how to change money beliefs, financial psychology quiz, money blocks, scarcity mindset money">
 <meta name="author" content="David Muehlfeld">
 <meta name="robots" content="index, follow, max-image-preview:large">
 <link rel="canonical" href="https://davidmuehlfeld.github.io/money-belief-test/">
 
 <!-- Open Graph -->
 <meta property="og:type" content="website">
+<meta property="og:url" content="https://davidmuehlfeld.github.io/money-belief-test/">
 <meta property="og:site_name" content="I am invested">
 <meta property="og:title" content="The Money Belief Test">
-<meta property="og:description" content="16 statements to find your money archetype: Avoider, Chaser, Show-off or Worrier. See the money beliefs driving your decisions — and how to change them.">
+<meta property="og:description" content="16 statements to find your money personality: Avoider, Chaser, Show-off or Worrier. See the money beliefs driving your decisions — and how to change them.">
 <meta property="og:image" content="https://substackcdn.com/image/fetch/$s_!Icha!,w_500,h_500,c_fill,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F9c21266d-afa3-48df-b1a8-9f826c4d33a8_500x500.png">
 <meta property="og:locale" content="en_US">
 
 <!-- Twitter -->
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="The Money Belief Test">
-<meta name="twitter:description" content="16 statements to find your money archetype. See the money beliefs driving your decisions — and how to change them.">
+<meta name="twitter:description" content="16 statements to find your money personality. See the money beliefs driving your decisions — and how to change them.">
 <meta name="twitter:image" content="https://substackcdn.com/image/fetch/$s_!Icha!,w_500,h_500,c_fill,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F9c21266d-afa3-48df-b1a8-9f826c4d33a8_500x500.png">
 
 <meta name="theme-color" content="#ffffff">
@@ -35,8 +36,8 @@
   "@context":"https://schema.org",
   "@type":"Quiz",
   "name":"The Money Belief Test",
-  "description":"A free money belief test based on the money scripts framework from financial psychology (Klontz). 16 statements identify your money archetype \u2014 Avoider, Chaser, Show-off or Worrier \u2014 the limiting money beliefs behind it, and concrete steps to change them.",
-  "keywords":"money beliefs, money archetype, money scripts, money mindset, limiting money beliefs, changing money beliefs",
+  "description":"A free money belief test based on the money scripts framework from financial psychology (Klontz). 16 statements identify your money personality \u2014 Avoider, Chaser, Show-off or Worrier \u2014 the money beliefs behind it, and concrete steps to change them.",
+  "keywords":"money beliefs, money personality, money archetype, money scripts, money mindset, limiting money beliefs, changing money beliefs",
   "educationalUse":"Self-assessment",
   "author":{
     "@type":"Person",
@@ -214,9 +215,9 @@
     font-size:clamp(30px,5.6vw,40px);font-weight:700;
     letter-spacing:-.02em;line-height:1.12;margin:0 0 7px;
   }
-  .vsub{font-size:18px;color:var(--ink-soft);margin:0;}
 
   .scores{margin:26px 0 0;}
+  .combo-note{font-size:15px;color:var(--ink-soft);line-height:1.5;margin:20px 0 0;}
   .srow{display:flex;align-items:center;gap:12px;margin-bottom:10px;}
   .sname{flex:0 0 82px;font-size:13px;font-weight:600;}
   .strack{flex:1;height:8px;background:var(--line);border-radius:4px;overflow:hidden;}
@@ -311,7 +312,7 @@
   <!-- ======== Sticky header: title + description + progress ======== -->
   <div class="sticky" id="sticky">
     <h1>The Money Belief Test</h1>
-    <p class="standfirst">16 statements to figure out your archetype. Rate each statement from 1 (fully disagree) to 5 (fully agree).</p>
+    <p class="standfirst">16 statements to figure out your money personality. Rate each statement from 1 (fully disagree) to 5 (fully agree).</p>
     <div class="bar"><div class="bar-fill" id="barFill"></div></div>
     <div class="count" id="count">0 of 16 answered</div>
   </div>
@@ -329,10 +330,10 @@
   <!-- ======== Results ======== -->
   <section class="results" id="results" tabindex="-1">
     <div class="verdict">
-      <div class="eyebrow" id="eyebrow">Your archetype</div>
+      <div class="eyebrow" id="eyebrow">Your money personality</div>
       <h2 class="vtitle" id="vtitle"></h2>
-      <p class="vsub" id="vsub"></p>
       <div class="scores" id="scores"></div>
+      <p class="combo-note">Most people are a combination of several. You'll recognize parts of yourself in the others too — but this one usually dominates your financial decisions.</p>
     </div>
 
     <div class="profile" id="profile"></div>
@@ -456,58 +457,53 @@ const TYPES = [
 
 const PROFILES = {
   avoider:{
-    flip:"\u201cMoney is a useful tool\u201d",
-    beliefs:"You believe that wanting money makes you a slightly worse person. Money is dirty. Rich people suck. You'd never say this out loud, but you feel it whenever someone mentions what they earn.",
-    actions:"You underprice. You round down. You leave money on the table and call it being reasonable. You don't open the banking app for weeks. When a friend brings up investing you change the subject.",
+    beliefs:"Wanting more makes you a worse person. You would never say it out loud, but you feel it.",
+    actions:"You underprice. You round down. You leave money on the table and call it being reasonable. You don't talk about investing with your friends.",
     emotions:"Guilty when you have more. Vaguely relieved when you have less. There's a strange comfort in not having much. It means you never have to defend it.",
     fix:[
-      "<strong>Separate the tool from the judgement.</strong> Money is neutral. How you earn and spend it is where ethics actually lives.",
-      "<strong>Raise one rate this quarter.</strong> A specific number, before you feel ready.",
-      "<strong>Get one credible outside opinion.</strong> This script is linked to distrusting financial advice \u2014 so the urge to skip this step is the script."
+      "<strong>Separate money from morality.</strong> Money is neutral. How you earn and use it is where ethics actually lives.",
+      "<strong>Raise one rate.</strong> A specific number, before you feel ready.",
+      "<strong>Talk about money with one person you trust.</strong> The more normal these conversations become, the less power the belief has over you."
     ]
   },
   chaser:{
-    flip:"\u201cEnough is a number\u201d",
-    beliefs:"More will fix it. The next raise, the next client, the next bonus. You've hit all targets and felt the satisfaction evaporate within a week, and your conclusion each time was that the target wasn't big enough.",
-    actions:"You push for earning more. And you can't stop spending more. Your goals are open-ended: \u201cmore,\u201d \u201cgrow,\u201d \u201cscale\u201d which means they can never be met. You've probably out-earned your own past definition of rich.",
+    beliefs:"More will fix it. The next raise, the next client, the next bonus. You've hit all targets and yet the satisfaction evaporated within days. Your brain immediately moved the finish line.",
+    actions:"You push for earning more. You can't stop spending more. Your goals are open-ended: \u201cmore,\u201d \u201cgrow,\u201d \u201cscale\u201d which means they can never be met.",
     emotions:"Restless. Never quite arrived. Slightly embarrassed by how quickly the good news stops feeling good.",
     fix:[
-      "<strong>Set a specific number.</strong> Not \u201cearn more.\u201d \u201c\u20ac100,000 in the index fund by December 2030.\u201d A goal you can complete is a goal that can actually pay out.",
-      "<strong>Delay instant gratification.</strong> Build a one-week gap between wanting something and buying it. Most things won't survive the wait.",
-      "<strong>Watch the credit line.</strong> This script is the one associated with carrying debt. Reverse it!"
+      "<strong>Make it specific.</strong> Not \u201cearn more.\u201d Define what enough means: \u201c\u20ac100k invested by December 2030.\u201d Or write down: \u201cI feel successful when\u2026\u201d",
+      "<strong>Delay instant gratification.</strong> Build a one-week gap between wanting something and buying something. Most things won't survive the wait.",
+      "<strong>Pay your future self first.</strong> Automate an investment on payday before you can spend the money elsewhere."
     ]
   },
   showoff:{
-    flip:"\u201cI do it for me\u201d",
-    beliefs:"What you own is who you are. You'd also notice, immediately, the dream vacation in Bali that your colleague is planning.",
-    actions:"You spend outward. The newest phone, the apartment, the holiday that photographs well. This is the crucial difference from the Chaser: they buy to feel something, you buy to be seen. Your spending is priced by an audience, and audiences are expensive. It shows up as a good salary and a bad savings rate.",
-    emotions:"Watched. Never quite ahead. The scoreboard never closes, because someone is always posting a better one.",
+    beliefs:"What you own is who you are. Without visible success, you worry people won't see your success.",
+    actions:"You spend outward. The newest phone, the apartment, the holiday that photographs well. This is the crucial difference from the Chaser: they buy to feel something, you buy to be seen. It shows up as a good salary and a bad savings rate.",
+    emotions:"Watched. Never quite ahead.",
     fix:[
-      "<strong>Know what the validation costs.</strong> Being over-focused on status tracks with lower well-being, lower vitality, and higher anxiety.",
-      "<strong>Cut exactly one for-the-audience expense.</strong> One. Not all of them.",
-      "<strong>Audit every purchase over \u20ac200</strong> with one question: who is this actually for \u2014 me, or other people?"
+      "<strong>Write down what you value.</strong> Compare your last ten purchases against that list.",
+      "<strong>Cut exactly one status expense.</strong> One. Not all of them.",
+      "<strong>Audit every purchase over \u20ac200</strong> with one question: Who is this actually for \u2014 me, or the version of me I want others to see?"
     ]
   },
   worrier:{
-    flip:"\u201cNo risk, no reward\u201d",
-    beliefs:"It's never safe. There's always a scenario you've missed. You've run the numbers on losing your job three times this year, the numbers were fine, and it didn't help. Investing feels like throwing your safety out of the window.",
-    actions:"You save well. Genuinely well, better than almost everyone you know. And then it sits in a savings account, going nowhere, losing a little to inflation every year. You don't spend on yourself.",
+    beliefs:"It's never safe. There's always a scenario you've missed. You've run the numbers on losing something three times, and it didn't help.",
+    actions:"You save well. And then it sits in a savings account, going nowhere, losing a little to inflation every year. You don't spend on yourself.",
     emotions:"Anxious. You may have built real security and you don't get to feel any of it. The safety exists on the statement and nowhere else.",
     fix:[
-      "<strong>Set boundaries.</strong> Yours is the healthiest script of the four. The saving habit is a real asset. The fix isn't recklessness, but setting a boundary: \u201cI need \u20acX in cash. Above that, I will invest.\u201d Undefined safety can never be reached which is exactly why you never feel it.",
-      "<strong>Automate one small investment.</strong> Small enough that a bad month wouldn't hurt. Leave it for six months. You're not trying to get rich. You're gathering evidence against the belief.",
+      "<strong>Set boundaries.</strong> The goal is not to become reckless. It is to replace endless safety-seeking with clear boundaries: \u201cI need \u20acX in cash. Above that, I will invest.\u201d Undefined safety can never be reached.",
+      "<strong>Automate one investment.</strong> Small enough that a bad month wouldn't hurt. Leave it for six months. You're gathering evidence against the belief.",
       "<strong>Create a required spending budget.</strong> Not permitted. Required."
     ]
   },
   torn:{
-    flip:"Name the contradiction, then pick one",
-    beliefs:"Two things at once, and they don't align. You resent money and you want it. You believe rich people are greedy and you'd like to be one. You think the game is rigged and you check the portfolio anyway.",
-    actions:"You save hard for three months and blow it in a weekend. You earn more and immediately find a way to feel bad about it. From outside it's inconsistent. From inside it's exhausting.",
-    emotions:"Like you're arguing with someone who has all your memories.",
+    beliefs:"You want financial freedom, but you're afraid of what it says about you. You believe the system is manipulated, but you check your portfolio every day hoping you found the exception.",
+    actions:"You push yourself to earn more, then feel uncomfortable when you succeed. You invest, then question your own motives. You want wealth, but you keep creating reasons why wanting it is a problem.",
+    emotions:"Like you're arguing with someone who has all your memories. One side wants security, freedom, and options. The other side is afraid of what those things might say about you.",
     fix:[
-      "<strong>Say it out loud, in full.</strong> \u201cI believe money is corrupting, and I want more of it.\u201d Most of a script's power is in never being stated.",
-      "<strong>Expect the overlap.</strong> The research does: avoiders score high on chasing and status underneath. Klontz is the proof: inherited <em>never trust institutions</em>, expressed it by betting everything on the most speculative asset he could find.",
-      "<strong>Fix one lever this quarter.</strong> Choose one. Not both."
+      "<strong>Say the contradiction out loud.</strong> \u201cPart of me believes money changes people for the worse. Another part of me wants more of it.\u201d A belief is less powerful when you can finally see it.",
+      "<strong>Replace guilt with responsibility.</strong> The question is not \u201cDo I deserve more?\u201d but \u201cWhat will I do with more?\u201d",
+      "<strong>Choose action over internal debate.</strong> Pick one lever this quarter: earn more, invest more, or spend more intentionally. Progress creates clarity."
     ]
   }
 };
@@ -580,9 +576,8 @@ function show() {
   const p = isTorn ? PROFILES.torn : PROFILES[top.key];
 
   document.getElementById("eyebrow").textContent =
-    isTorn ? "Two archetypes, close together" : "Your archetype";
+    isTorn ? "Two money personalities, close together" : "Your money personality";
   document.getElementById("vtitle").textContent = isTorn ? "The Torn" : top.label;
-  document.getElementById("vsub").textContent = p.flip;
 
   const box = document.getElementById("scores");
   box.innerHTML = "";
